@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Code Review Assistant
 
-## Getting Started
+This project is a prototype AI-powered code review assistant built using **Next.js (App Router)**, **TypeScript**, **React**, and **React Query**, leveraging the **OpenAI API** for AI code analysis. It demonstrates multiple AI code review modes in a single interface: Reviewer, Pair Engineer, and Extended Pair Engineer.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Challenge Context
+
+**Careem Optional AI Challenge (Software Engineer, 4+ years)**
+
+- **Objective:** Show AI savviness by building a small AI tool.
+- **Options:**
+  1. **Smart Code Reviewer:** Reviews code for readability, structure, and maintainability before human review.
+  2. **AI Pair Engineer:** Codes alongside developers — detecting design flaws, proposing tests, and refactoring.
+  3. **Code Review Assistant:** Writes a prompt that reviews short code snippets and recommends three improvements plus one positive note.
+
+---
+
+## Approach
+
+This prototype implements **Reviewer, Pair Engineer, and Extended Pair modes**:
+
+1. **Reviewer Mode:** Analyzes code for readability, structure, and maintainability, providing feedback without changing the code.
+2. **Pair Engineer Mode:** Offers actionable suggestions in plain text to improve code quality.
+3. **Extended Pair Engineer Mode:** Provides suggestions **with optional code snippets**, showing how fixes could be implemented safely without overwriting the original code.
+
+**Key Features:**
+
+- Outputs structured **JSON** from the AI for predictable frontend rendering.
+- Supports dark/light mode with a responsive UI.
+- Demonstrates progressive AI assistance: static review → guided suggestions → actionable refactoring guidance.
+- Designed to feel helpful and collaborative rather than pessimistic or overwhelming.
+
+---
+
+## How to Run
+
+1. Clone the repository:
+
+```
+git clone <repo-url>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Set your OpenAI API key:
 
-## Learn More
+```
+NEXT_PUBLIC_OPENAI_API_KEY=your_key_here
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Run the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. Open [http://localhost:3000](http://localhost:3000) to access the interface.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Usage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Select a mode** using the radio buttons:
+  - Reviewer: Basic analysis
+  - Pair Engineer: Text suggestions
+  - Extended Pair Engineer: Text + code snippets
+- **Paste TypeScript / React code** into the textarea.
+- Click **Analyze** to get AI feedback.
+
+---
+
+## 100-Word Summary
+
+This prototype demonstrates an AI Code Review Assistant built with Next.js, TypeScript, React, and React Query, integrating the OpenAI API. It supports three modes: Reviewer (static analysis of readability and maintainability), Pair Engineer (actionable text-based suggestions), and Extended Pair Engineer (includes optional code snippets for safer refactoring). To keep feedback constructive and developer-friendly, the assistant includes a positive note. The prototype demonstrates progressive AI assistance and practical frontend–AI integration, highlighting my approach to building thoughtful, maintainable, and user-centric AI developer tools.
+
+---
+
+## Notes
+
+- This is a **prototype for demonstration purposes**.
+- Uses **dummy/public code** for testing; no confidential data included.
+- Designed to showcase **AI thinking, code review, and interactive suggestions**.
+
+## Testing Approach
+
+For this challenge, I focused on unit and component-level tests using Jest and React Testing Library to validate UI behavior and mode selection logic. I intentionally avoided full integration tests to keep the setup lightweight and the signal focused on reasoning, maintainability, and developer experience.

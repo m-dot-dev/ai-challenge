@@ -18,8 +18,7 @@ function Category({ title, items }: { title: string; items: string[] }) {
 
 // Analysis Result Component
 function AnalysisResult({ result }: { result: CodeAnalysisResult }) {
-  // Show only last 3 suggestions
-  const topSuggestions = result.suggestions ? result.suggestions.slice(-3) : [];
+  const suggestions = result.suggestions || [];
 
   return (
     <section className="mt-8">
@@ -29,10 +28,10 @@ function AnalysisResult({ result }: { result: CodeAnalysisResult }) {
       <Category title="Structure" items={result.structure} />
       <Category title="Maintainability" items={result.maintainability} />
 
-      {topSuggestions.length > 0 && (
+      {suggestions.length > 0 && (
         <div className="mb-6">
           <h3 className="text-xl font-medium mb-2">Suggestions</h3>
-          {topSuggestions.map((s, idx) => {
+          {suggestions.map((s, idx) => {
             if (typeof s === "object") {
               // Extended Pair Mode
               return (
